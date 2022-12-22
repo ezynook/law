@@ -1,0 +1,7 @@
+RewriteEngine On
+ErrorDocument 404 /law/404.html
+ErrorDocument 403 /law/404.html
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(([A-Za-z0-9\-]+/)*[A-Za-z0-9\-]+)?$ $1.php
+DirectoryIndex Auth.php
