@@ -44,7 +44,7 @@ if (isset($_POST['submit'])){
             if (isset($_POST['savedata']) && $_POST['savedata'] == '1'){
                 $sql = "
                 INSERT INTO 
-                    `tbl_data_temp`(`subject`, `details`, `update_dt`, `province_location`)
+                    `tbl_data`(`subject`, `details`, `update_dt`, `province_location`)
                 VALUES
                     ('{$subject}','{$details}','{$update_dt}','{$province}')
             ";
