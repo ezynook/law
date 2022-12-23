@@ -105,6 +105,7 @@ if (isset($_POST['submit'])){
                 </label>
             </div>
             <input type="submit" value="Save / Preview" name="submit" class="btn btn-primary">
+            <a href="index.php?menu=home" class=" btn btn-dark">กลับสู่หน้าหลัก</a>
         </form>
         <p></p>
         <div class="alert alert-warning" role="alert">
