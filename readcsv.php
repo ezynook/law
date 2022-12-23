@@ -41,25 +41,27 @@ if (isset($_POST['submit'])){
             $details = trim($q[1]);
             $update_dt = trim($q[2]);
             $province = trim($q[3]);
-            $sql = "
+            if (isset($_POST['savedata']) && $_POST['savedata'] == '1'){
+                $sql = "
                 INSERT INTO 
                     `tbl_data_temp`(`subject`, `details`, `update_dt`, `province_location`)
                 VALUES
                     ('{$subject}','{$details}','{$update_dt}','{$province}')
             ";
-            $query = $dbcon->query($sql);
-            if ($query){
-                $alert = '
-                    <div class="alert alert-success" role="alert">
-                        นำเข้าข้อมูลเรียบร้อยแล้ว
-                    </div>
-                ';
-            }else{
-                $alert = '
-                    <div class="alert alert-danger" role="alert">
-                        นำเข้าข้อมูลไม่สำเร็จ
-                    </div>
-                ';
+                $query = $dbcon->query($sql);
+                if ($query){
+                    $alert = '
+                        <div class="alert alert-success" role="alert">
+                            นำเข้าข้อมูลเรียบร้อยแล้ว
+                        </div>
+                    ';
+                }else{
+                    $alert = '
+                        <div class="alert alert-danger" role="alert">
+                            นำเข้าข้อมูลไม่สำเร็จ
+                        </div>
+                    ';
+                }
             }
         }
         $i++;
@@ -80,7 +82,7 @@ if (isset($_POST['submit'])){
 </head>
 
 <body>
-    <div class="container mt-5">
+    <div class="container mt-2">
         <?php if(isset($alert)){echo $alert;} ?>
         <div class="alert alert-success" role="alert">
             นำเข้าข้อมูลข่าวจากไฟล์ Excel / CSV
@@ -93,11 +95,22 @@ if (isset($_POST['submit'])){
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="1" name="preview" id="flexCheckChecked">
                 <label class="form-check-label" for="flexCheckChecked">
-                    แสดงข้อมูลที่นำเข้า
+                    แสดงข้อมูล
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="1" name="savedata" id="flexCheckChecked" checked>
+                <label class="form-check-label" for="flexCheckChecked">
+                    บันทึกข้อมูลลงฐานข้อมูล
                 </label>
             </div>
             <input type="submit" value="Save / Preview" name="submit" class="btn btn-primary">
         </form>
+        <p></p>
+        <div class="alert alert-warning" role="alert">
+            การนำเข้ารูปแบบนี้จะเป็นการนำเข้าโดยตรงที่ไม่ได้ผ่านการ Cleasing และ Text Analytics ใดๆ <br>
+            สำรองไว้ในกรณีไม่ต้องการนำเข้าแบบ Python (ไม่ต้องใช้ Plugins หรือ Extension ใดๆ)
+        </div>
         <?php if (isset($_POST['preview'])){ ?>
         <br>
         <table class="table table-bordered">

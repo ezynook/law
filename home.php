@@ -96,6 +96,8 @@ if (isset($_GET['import'])){
           <i class="text-danger"><strong>** ไฟล์ CSV ต้องถูกคั่นด้วยเครื่องหมาย | เท่านั้น **</strong></i><br>
           <i class="text-danger"><strong>** CSV Separator By PIPE</strong></i><br>
           <i class="text-danger"><strong>วิธีทำ: <a href='https://www.automateexcel.com/how-to/convert-save-as-pipe-delimited/' target="_blank">ที่นี่</a></strong></i>
+          <hr>
+          <a href="readcsv.php" class="text-dark"><b>คลิกที่นี่เพื่อนำเข้าแบบ Local Storage</b></a>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
