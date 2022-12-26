@@ -13,10 +13,6 @@
         box-shadow: 5px 5px 5px blue;
     }
 
-    .btnlaw {
-        box-shadow: 5px 5px 5px orange;
-    }
-
     table {
         box-shadow: 5px 5px 5px #CCC;
     }
@@ -41,11 +37,12 @@
     <div class="container mt-3 mb-3" style="overflow-x: hidden;">
         <form action="" method="get" id="formreport">
             <div class="row">
-            <div class="col-auto">
+                <div class="col-auto">
                     <input type="text" name="search" class="form-control" placeholder="คำค้นหา" style="width: 200px;">
                 </div>
                 <div class="col-auto">
-                    <button type="submit" name="btnsearch" class="btn btn-success"><i class="fa fa-mouse-pointer"></i> ค้นหา</button>
+                    <button type="submit" name="btnsearch" class="btn btn-success"><i class="fa fa-mouse-pointer"></i>
+                        ค้นหา</button>
                     <input type="hidden" name="menu" value="law-report">
                 </div>
             </div>
@@ -64,11 +61,32 @@
                 <tr>
                     <td><?=$row['details']?></td>
                     <td><?=$row['group']?></td>
-                    <td><?=$row['law']?></td>
+                    <td>
+                    <a href="#myModal" data-bs-toggle="modal" data-bs-target="#myModal"
+                            id="<?=$row['law_id']; ?>"
+                            data-id="<?=$row['law_id']; ?>"
+                            data-law="<?=$row['law'];?>"
+                            class="btnlaw"><strong><?= $row['law'];?></strong>
+                        </a>
+                    </td>
                 </tr>
                 <?php } ?>
             </tbody>
         </table>
+    </div>
+    <!-- Modal View -->
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="Mymodallabel">คำเสมือน</h5>
+                </div>
+                <div class="modal-body table-responsive" id="fetched-data"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -130,6 +148,23 @@ $(document).ready(function() {
                 "sLast": "หน้าสุดท้าย"
             }
         }
+    });
+});
+$(document).ready(function() {
+    $('#myModal').on('show.bs.modal', function(e) {
+        $('#myModal').trigger('reset');
+        var rowid = $(e.relatedTarget).data('id');
+        $('#Mymodallabel').html('คำเสมือน: '+$(e.relatedTarget).data('law'))
+        $.ajax({
+            url: 'include/Function/LawOnly.php',
+            method: 'POST',
+            data: {
+                id: rowid
+            },
+            success: function(data) {
+                $('#fetched-data').html(data);
+            }
+        });
     });
 });
 </script>

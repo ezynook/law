@@ -107,8 +107,9 @@
                     <td><?=convertDate($val['Datetimes']);?></td>
                     <td><?=$val['Location']?></td>
                     <td>
-                        <a href="#myModal" id="data-id=<?php echo $val['law_id']; ?>" data-bs-toggle="modal"
-                            data-bs-target="#myModal" data-id="<?php echo $val['law_id']; ?>"
+                        <a href="#myModal" data-bs-toggle="modal" data-bs-target="#myModal"
+                            id="data-id=<?php echo $val['law_id']; ?>"
+                            data-id="<?php echo $val['law_id']; ?>"
                             class="btn btn-warning btnlaw"><strong><i><?= $val['Law'];?></i></strong>
                         </a>
                     </td>

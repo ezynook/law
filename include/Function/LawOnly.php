@@ -6,7 +6,7 @@
         $outp = "";
         $sql = "
             SELECT
-                *
+                synonyms as synonyms
             FROM
                 tbl_law
             WHERE
@@ -22,18 +22,6 @@
         }
         $outp = "
             <table class='table table-bordered'>
-                <tr>
-                    <td><b>มาตรา</b></td>
-                    <td>$row[law]</td>
-                </tr>
-                <tr>
-                    <td><b>รายละเอียดมาตรา</b></td>
-                    <td>$row[details]</td>
-                </tr>
-                <tr>
-                    <td><b>แบ่งประเภทมาตรา</b></td>
-                    <td>$row[group]</td>
-                </tr>
                 <tr>
                     <td><b>คำเสมือน</b></td>
                     <td>$synonyms</td>

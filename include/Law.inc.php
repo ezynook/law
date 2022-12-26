@@ -58,11 +58,11 @@ class Law{
         $sql = "
             SELECT
                 *,
-                CONCAT(details,' ',keyword) as search
+                CONCAT(details,' ',keyword, ' ','synonyms') as search
             FROM
                 tbl_law
             WHERE
-                CONCAT(details,' ',keyword) LIKE '%{$search}%'
+                CONCAT(details,' ',keyword, ' ','synonyms') LIKE '%{$search}%'
             ORDER BY
                 `group` ASC
         ";
