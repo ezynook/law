@@ -49,6 +49,10 @@ $total = implode(",", $total);
 </head>
 
 <body>
+    <div class="container" align="left">
+        <i class="	fa fa-home" style="font-size:20px"></i> รายงานข้อมูล >> สรุปข้อมูลข่าวแบบกราฟ (Bar Chart)
+        <hr />
+    </div>
     <div>
         <button class="btn btn-secondary" id="print">Print</button>
         <br>

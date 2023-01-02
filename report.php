@@ -16,7 +16,8 @@
     .btnlaw {
         box-shadow: 5px 5px 5px orange;
     }
-    table{
+
+    table {
         box-shadow: 5px 5px 5px #CCC;
     }
     </style>
@@ -38,6 +39,10 @@
 <!-- End PHP Code -->
 
 <body>
+    <div class="container" align="left">
+        <i class="	fa fa-home" style="font-size:20px"></i> รายงานข้อมูล
+        <hr />
+    </div>
     <div class="container mt-3 mb-3" style="overflow-x: hidden;">
         <form action="" method="get" id="formreport">
             <div class="input-group mb-3">
@@ -45,8 +50,10 @@
                     <span class="input-group-text" id="">จากวันที่-ถึงวันที่</span>
                 </div>
                 <input type="hidden" name="menu" value="report">
-                <input type="date" name="dt" class="form-control" placeholder="จากวันที่" value="<?php echo $_GET['dt'] ?>">
-                <input type="date" name="dts" class="form-control" placeholder="ถึงวันที่" value="<?php echo $_GET['dts'] ?>">
+                <input type="date" name="dt" class="form-control" placeholder="จากวันที่"
+                    value="<?php echo $_GET['dt'] ?>">
+                <input type="date" name="dts" class="form-control" placeholder="ถึงวันที่"
+                    value="<?php echo $_GET['dts'] ?>">
             </div>
             <button type="submit" class="btn btn-primary btnfind"><i class="fa fa-mouse-pointer"></i>
                 ค้นหาข้อมูล</button>
@@ -108,8 +115,7 @@
                     <td><?=$val['Location']?></td>
                     <td>
                         <a href="#myModal" data-bs-toggle="modal" data-bs-target="#myModal"
-                            id="data-id=<?php echo $val['law_id']; ?>"
-                            data-id="<?php echo $val['law_id']; ?>"
+                            id="data-id=<?php echo $val['law_id']; ?>" data-id="<?php echo $val['law_id']; ?>"
                             class="btn btn-warning btnlaw"><strong><i><?= $val['Law'];?></i></strong>
                         </a>
                     </td>
@@ -148,23 +154,24 @@
 <script>
 $(document).ready(function() {
     var dt = new Date();
-    var dt2 = dt.getDate() +'_' + dt.getMonth() + '_' + dt.getFullYear() + '_' + dt.getHours() + "_" + dt.getMinutes();
+    var dt2 = dt.getDate() + '_' + dt.getMonth() + '_' + dt.getFullYear() + '_' + dt.getHours() + "_" + dt
+        .getMinutes();
     $('#myTable').dataTable({
         dom: 'Blfrtip',
-        "lengthMenu": [ 10, 25, 50],
+        "lengthMenu": [10, 25, 50],
         buttons: [{
                 extend: 'csv',
                 charset: 'UTF-8',
                 fieldSeparator: ',',
                 bom: true,
-                filename: 'export_csv_report_'+dt2,
+                filename: 'export_csv_report_' + dt2,
                 title: 'Export to csv'
             },
             {
                 extend: 'excel',
                 charset: 'UTF-8',
                 bom: true,
-                filename: 'export_excel_report_'+dt2,
+                filename: 'export_excel_report_' + dt2,
                 title: 'Export to Excel'
             },
             {
@@ -210,4 +217,5 @@ $(document).ready(function() {
     });
 });
 </script>
+
 </html>

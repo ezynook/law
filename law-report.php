@@ -34,6 +34,10 @@
 <!-- End PHP Code -->
 
 <body>
+    <div class="container" align="left">
+        <i class="	fa fa-home" style="font-size:20px"></i> สืบค้นบทบัญญัติกฎหมาย
+        <hr />
+    </div>
     <div class="container mt-3 mb-3" style="overflow-x: hidden;">
         <form action="" method="get" id="formreport">
             <div class="row">

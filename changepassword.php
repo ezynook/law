@@ -78,6 +78,10 @@
 <!-- End PHP Code -->
 
 <body>
+  <div class="container" align="left">
+        <i class="	fa fa-home" style="font-size:20px"></i> จัดการ >> เปลี่ยนรหัสผ่าน
+        <hr />
+  </div>
   <div class="container mt-3" align="center">
     <span class="badge bg-info text-dark"><h6>ชื่อผู้ใช้ : <?=$username?></h6></span>
     <form action="" method="post" id="formpasswd">

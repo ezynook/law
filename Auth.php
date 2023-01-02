@@ -44,6 +44,7 @@
 </head>
 <!-- PHP Code -->
 <?php
+    if (!isset($_SESSION)){session_start();}
     if (isset($_SESSION['Username'])){
         echo "<script>window.location.href='index?menu=index'</script>";
         exit;
@@ -58,7 +59,7 @@
                         setTimeout(function() {
                             swal({
                                 title:  "ชื่อผู้ใช้ของคุณโดนระงับเข้าสู่ระบบ",
-                                text: "โปรกติดต่อผู้ดูแลระบบ",
+                                text: "โปรดติดต่อผู้ดูแลระบบ",
                                 type: "warning",
                                 confirmButtonText: "Close"
                             }, function() {
@@ -68,9 +69,11 @@
                     </script>';
                 exit;
             }
+            $_SESSION['UserID'] = $response['id'];
             $_SESSION['Username'] = $response['username'];
             $_SESSION['Role'] = $response['role'];
             if (isset($_POST['cookie']) && $_POST['cookie'] == '1'){
+                setcookie("UserID", $_POST['id'], time() + 2678400);
                 setcookie("Username", $_POST['username'], time() + 2678400);
                 setcookie("Role", $_POST['role'], time() + 2678400);
             }

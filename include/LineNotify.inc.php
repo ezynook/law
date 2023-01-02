@@ -7,6 +7,9 @@
         - sendline -> ส่งไลน์
 ---------------------------------------------------------------
 */
+if (!isset($_SESSION)){
+    session_start();
+}
 date_default_timezone_set('Asia/Bangkok');
 require_once 'Database/DatabaseConnect.inc.php';
 

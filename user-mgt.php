@@ -75,6 +75,10 @@
 <!-- End PHP Code -->
 
 <body>
+    <div class="container" align="left">
+        <i class="	fa fa-home" style="font-size:20px"></i> จัดการ >> จัดการผู้ใช้
+        <hr />
+    </div>
     <div class="container mt-3" align="center">
         <table class="table table-sm table-bordered table-striped">
             <thead class="table-dark">

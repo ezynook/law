@@ -43,6 +43,10 @@ $resultchart = $obj->barChart();
 </head>
 
 <body>
+    <div class="container" align="left">
+        <i class="	fa fa-home" style="font-size:20px"></i> รายงานข้อมูล >> สรุปข้อมูลข่าวแบบกราฟ (Pie Chart)
+        <hr />
+    </div>
     <button class="btn btn-secondary" id="print">Print</button>
     <div class="container-fluid" align="center">
         <div id="piechart" style="width: 1000px; height: 700px;"></div>
