@@ -29,4 +29,14 @@ trait DatabaseConnect{
             exit();
         }
     }
+    public function read_Config(){
+        $sql = "SELECT * FROM tbl_config WHERE config_name = 'Send Line'";
+        $query = $this->Connect()->query($sql);
+        $rows = $query->fetch_assoc();
+        if ($rows['val'] == 1){
+            return 'send';
+        }else{
+            return 'failed';
+        }
+    }
 }

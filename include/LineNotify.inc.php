@@ -22,7 +22,6 @@ trait LineNotify{
         foreach($query as $token){
             $this->sendline($token['token'], $data);
         }
-
     }
 
     public function sendline($sToken, $data = array()){

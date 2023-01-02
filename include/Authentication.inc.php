@@ -32,12 +32,15 @@ class Authentication{
         ";
         $query = $this->Connect()->query($sql);
         if ($query->num_rows > 0){
-            $data_arr = [
-                "ประเภทการแจ้งเตือน : เข้าสู่ระบบ",
-                "เวลา/วันที่ : ".$this->datetime,
-                "ผู้ที่เข้าสู่ระบบ: ".$user
-            ];
-            $this->findToken($data_arr);
+            $config = $this->read_Config();
+            if ($config == 'send'){
+                $data_arr = [
+                    "ประเภทการแจ้งเตือน : เข้าสู่ระบบ",
+                    "เวลา/วันที่ : ".$this->datetime,
+                    "ผู้ที่เข้าสู่ระบบ: ".$user
+                ];
+                $this->findToken($data_arr);
+            }
             return $query->fetch_assoc();
         }else{
             return false;
@@ -57,12 +60,15 @@ class Authentication{
         ";
         $query = $this->Connect()->query($sql);
         if ($query){
-            $data_arr = [
-                "ประเภทการแจ้งเตือน : สมัครสมาชิกใหม่",
-                "เวลา/วันที่ : ". $this->datetime,
-                "ชื่อผู้ใช้ที่สมัคร : ".$user
-            ];
-            $this->findToken($data_arr);
+            $config = $this->read_Config();
+            if ($config == 1){
+                $data_arr = [
+                    "ประเภทการแจ้งเตือน : สมัครสมาชิกใหม่",
+                    "เวลา/วันที่ : ". $this->datetime,
+                    "ชื่อผู้ใช้ที่สมัคร : ".$user
+                ];
+                $this->findToken($data_arr);
+            }
             return 'success';
         }else{
             return NULL;
