@@ -12,7 +12,7 @@ trait DatabaseConnect{
     protected $params = array(
         "HOST" => "localhost",
         "USER" => "root",
-        "PASS" => "root",
+        "PASS" => "",
         "DBNAME" => "db_law",
     );
     public function Connect(){

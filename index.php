@@ -74,6 +74,14 @@
                                 <li class="nav-header">เมนู</li>
 
                                 <li class="nav-item">
+                                    <a href="index?menu=index"
+                                        class="nav-link text-white <?php if($menu == 'index'){echo 'active';}else{echo '';} ?> ">
+                                        <i class="nav-icon fas fa-home text-white"></i>
+                                        <p>หน้าแรก</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
                                     <a href="index?menu=report"
                                         class="nav-link text-white <?php if($menu == 'report'){echo 'active';}else{echo '';} ?> ">
                                         <i class="nav-icon fas fa-chart-area text-white"></i>
@@ -161,7 +169,7 @@
                         exit;
                     }
                     if ($_GET['menu'] == 'index'){
-                        require 'home.php';
+                        require 'welcome.php';
                     }elseif ($_GET['menu'] == 'import'){
                         require 'home.php';
                     }elseif ($_GET['menu'] == 'report'){
