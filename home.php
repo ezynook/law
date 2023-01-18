@@ -23,7 +23,7 @@
 if (!isset($_SESSION)){
     session_start();
 }
-if (!isset($_SESSION['Username'])){
+if (!isset($_SESSION['Role'])){
     echo "<script>window.location.href='Auth'</script>";
     exit;
 }
@@ -57,7 +57,7 @@ if (isset($_GET['import'])){
 ?>
 <!-- End PHP Code -->
 
-<body>
+<body id="bodydiv">
   <div class="container" align="left">
     <i class="	fa fa-home" style="font-size:20px"></i> นำเข้าข้อมูล
     <hr>

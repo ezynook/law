@@ -22,13 +22,6 @@
 </head>
 <!-- PHP Code -->
 <?php
-    if (!isset($_SESSION)){
-      session_start();
-    }
-    if (!isset($_SESSION['Username'])){
-      echo "<script>window.location.href='Auth'</script>";
-      exit;
-    }
     require 'autoload/module.inc.php';
     if ($_SESSION['Role'] != 0){
       echo '<script>

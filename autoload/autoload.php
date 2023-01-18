@@ -12,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&display=swap" rel="stylesheet">
 <style>
     body{
-        font-family: 'Noto Sans Thai', sans-serif;
+        font-family: 'Kanit', sans-serif;
     }
     nav {
         box-shadow: 0 4px 4px 0 rgba(0,0,0,.2);
