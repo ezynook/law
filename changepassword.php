@@ -36,7 +36,7 @@
         echo "
             <script>
                 alert('ไม่มีการล็อกอินเข้ามาในระบบ ไม่สามารถเปลี่ยนรหัสผ่านได้')
-                window.location.href='index?menu=home'
+                window.location.href='index?menu=index'
             </script>
         ";
         exit;
@@ -53,7 +53,7 @@
                             type: "success",
                             confirmButtonText: "Close"
                         }, function() {
-                            window.location.href = "index?menu=home"
+                            window.location.href = "index?menu=index"
                         });
                     }, 300);
                     </script>';
@@ -67,7 +67,7 @@
                             type: "error",
                             confirmButtonText: "Close"
                         }, function() {
-                            window.location.href = "index?menu=home"
+                            window.location.href = "index?menu=index"
                         });
                     }, 300);
                     </script>';
