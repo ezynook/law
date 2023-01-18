@@ -5,6 +5,6 @@ git add .
 git commit -m "$DATETIME"
 git push -u origin main
 echo "===========================
-Git Push Finished @ ${DATETIME}
+Git Push Finished ${DATETIME}
 ===========================
 "
