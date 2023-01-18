@@ -165,7 +165,7 @@
                 <section class="content">
                     <?php
                     if (empty($_GET['menu'])){
-                        echo "<script>window.location.href='index?menu=report'</script>";
+                        echo "<script>window.location.href='index?menu=index'</script>";
                         exit;
                     }
                     if ($_GET['menu'] == 'index'){

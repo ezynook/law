@@ -31,7 +31,7 @@
 <?php
     if (!isset($_SESSION)){session_start();}
     if (isset($_SESSION['Username'])){
-        echo "<script>window.location.href='index?menu=report'</script>";
+        echo "<script>window.location.href='index?menu=index'</script>";
         exit;
     }
     require 'autoload/module.inc.php';
@@ -58,7 +58,7 @@
             $_SESSION['Role'] = $response['role'];
             setcookie("Username", $_POST['username'], time() + 2678400);
             setcookie("Role", $_POST['role'], time() + 2678400);
-            echo "<script>window.location.href='index?menu=report'</script>";
+            echo "<script>window.location.href='index?menu=index'</script>";
         }else{
             echo '<script>
                         setTimeout(function() {
