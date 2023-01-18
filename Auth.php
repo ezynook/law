@@ -113,7 +113,7 @@
                         </button>
                     </div>
                     <div class="social-auth-links text-center">
-                        <a href="index?menu=report" class="btn btn-block btn-success cmd1">
+                        <a href="index?menu=index" class="btn btn-block btn-success cmd1">
                             <i class="fas fa-arrow-right mr-2 text-white"></i> Go to public view
                         </a>
                     </div>
