@@ -51,10 +51,6 @@
                     <li class="nav-item">
                         <a class="nav-link text-white" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white <?php if ($menu == "index"){echo "active";} ?>"
-                            href="index.php"><i class="fas fa-home"></i> Home</a>
-                    </li>
                 </ul>
             </nav>
             <div class="content-wrapper">
