@@ -10,9 +10,9 @@ use mysqli;
 
 trait DatabaseConnect{
     protected $params = array(
-        "HOST" => "mydatabase",
+        "HOST" => "localhost",
         "USER" => "root",
-        "PASS" => "2909",
+        "PASS" => "",
         "DBNAME" => "db_law",
     );
     public function Connect(){
