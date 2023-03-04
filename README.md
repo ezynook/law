@@ -24,5 +24,4 @@
 Developed by
 ## ***Pasit Yodsoi 2023***
 ---
-ติดตาม Pasit Yodsoi ได้ที่ [Github]
-[Github]: https://ezynook.github.io
+ติดตาม Pasit Yodsoi ได้ที่ [Github]: (https://ezynook.github.io)
