@@ -68,7 +68,7 @@
                             <ul class="nav nav-pills nav-sidebar nav-child-indent flex-column" data-widget="treeview"
                                 role="menu" data-accordion="false">
                                 <li class="nav-header">เมนู</li>
-
+                                <?php if ($_GET['menu'] != 'index'){ ?>
                                 <li class="nav-item">
                                     <a href="index?menu=index"
                                         class="nav-link text-white <?php if($menu == 'index'){echo 'active';}else{echo '';} ?> ">
@@ -76,15 +76,33 @@
                                         <p>หน้าแรก</p>
                                     </a>
                                 </li>
-
+                                <?php }else{ ?>
                                 <li class="nav-item">
-                                    <a href="index?menu=report"
-                                        class="nav-link text-white <?php if($menu == 'report'){echo 'active';}else{echo '';} ?> ">
-                                        <i class="nav-icon fas fa-chart-area text-white"></i>
-                                        <p>รายงาน</p>
+                                    <a href="#!"
+                                        class="nav-link text-white <?php if($menu == 'index'){echo 'active';}else{echo '';} ?> ">
+                                        <i class="nav-icon fas fa-home text-white"></i>
+                                        <p>หน้าแรก</p>
                                     </a>
                                 </li>
-
+                                <?php } ?>
+                                <?php if ($_GET['menu'] != 'report'){ ?>
+                                    <li class="nav-item">
+                                        <a href="index?menu=report"
+                                            class="nav-link text-white <?php if($menu == 'report'){echo 'active';}else{echo '';} ?> ">
+                                            <i class="nav-icon fas fa-chart-area text-white"></i>
+                                            <p>รายงาน</p>
+                                        </a>
+                                    </li>
+                                <?php }else{ ?>
+                                    <li class="nav-item">
+                                        <a href="#!"
+                                            class="nav-link text-white <?php if($menu == 'report'){echo 'active';}else{echo '';} ?> ">
+                                            <i class="nav-icon fas fa-chart-area text-white"></i>
+                                            <p>รายงาน</p>
+                                        </a>
+                                    </li>
+                                <?php } ?>
+                                <?php if ($_GET['menu'] != 'law-report'){ ?>
                                 <li class="nav-item">
                                     <a href="index?menu=law-report"
                                         class="nav-link text-white <?php if($menu == 'law-report'){echo 'active';}else{echo '';} ?> ">
@@ -92,53 +110,119 @@
                                         <p>สืบค้นบทบัญญัติกฎหมาย</p>
                                     </a>
                                 </li>
-
+                                <?php }else{ ?>
                                 <li class="nav-item">
-                                    <a href="index?menu=summery"
-                                        class="nav-link text-white <?php if($menu == 'summery'){echo 'active';}else{echo '';} ?> ">
-                                        <i class="nav-icon fas fa-check text-white"></i>
-                                        <p>สรุปข้อมูลข่าว</p>
+                                    <a href="#!"
+                                        class="nav-link text-white <?php if($menu == 'law-report'){echo 'active';}else{echo '';} ?> ">
+                                        <i class="nav-icon fas fa-search text-white"></i>
+                                        <p>สืบค้นบทบัญญัติกฎหมาย</p>
                                     </a>
                                 </li>
-
-                                <li class="nav-item">
-                                    <a href="index?menu=chart"
-                                        class="nav-link text-white <?php if($menu == 'chart'){echo 'active';}else{echo '';} ?> ">
-                                        <i class="nav-icon fas fa-chart-bar text-white"></i>
-                                        <p>สรุปข้อมูลข่าวแบบกราฟ (Bar)</p>
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="index?menu=chart-pie"
-                                        class="nav-link text-white <?php if($menu == 'chart-pie'){echo 'active';}else{echo '';} ?> ">
-                                        <i class="nav-icon fas fa-chart-pie text-white"></i>
-                                        <p>สรุปข้อมูลข่าวแบบกราฟ (Pie)</p>
-                                    </a>
-                                </li>
+                                <?php } ?>
+                                <?php if ($_GET['menu'] != 'summery'){ ?>
+                                    <li class="nav-item">
+                                        <a href="index?menu=summery"
+                                            class="nav-link text-white <?php if($menu == 'summery'){echo 'active';}else{echo '';} ?> ">
+                                            <i class="nav-icon fas fa-check text-white"></i>
+                                            <p>สรุปข้อมูลข่าว</p>
+                                        </a>
+                                    </li>
+                                <?php }else{ ?>
+                                    <li class="nav-item">
+                                        <a href="#!"
+                                            class="nav-link text-white <?php if($menu == 'summery'){echo 'active';}else{echo '';} ?> ">
+                                            <i class="nav-icon fas fa-check text-white"></i>
+                                            <p>สรุปข้อมูลข่าว</p>
+                                        </a>
+                                    </li>
+                                <?php } ?>
+                                <?php if ($_GET['menu'] != 'chart'){ ?>
+                                    <li class="nav-item">
+                                        <a href="index?menu=chart"
+                                            class="nav-link text-white <?php if($menu == 'chart'){echo 'active';}else{echo '';} ?> ">
+                                            <i class="nav-icon fas fa-chart-bar text-white"></i>
+                                            <p>สรุปข้อมูลข่าวแบบกราฟ (Bar)</p>
+                                        </a>
+                                    </li>
+                                <?php }else{ ?>
+                                    <li class="nav-item">
+                                        <a href="#!"
+                                            class="nav-link text-white <?php if($menu == 'chart'){echo 'active';}else{echo '';} ?> ">
+                                            <i class="nav-icon fas fa-chart-bar text-white"></i>
+                                            <p>สรุปข้อมูลข่าวแบบกราฟ (Bar)</p>
+                                        </a>
+                                    </li>
+                                <?php } ?>
+                                <?php if ($_GET['menu'] != 'chart-pie'){ ?>
+                                    <li class="nav-item">
+                                        <a href="index?menu=chart-pie"
+                                            class="nav-link text-white <?php if($menu == 'chart-pie'){echo 'active';}else{echo '';} ?> ">
+                                            <i class="nav-icon fas fa-chart-pie text-white"></i>
+                                            <p>สรุปข้อมูลข่าวแบบกราฟ (Pie)</p>
+                                        </a>
+                                    </li>
+                                <?php }else{ ?>
+                                    <li class="nav-item">
+                                        <a href="#!"
+                                            class="nav-link text-white <?php if($menu == 'chart-pie'){echo 'active';}else{echo '';} ?> ">
+                                            <i class="nav-icon fas fa-chart-pie text-white"></i>
+                                            <p>สรุปข้อมูลข่าวแบบกราฟ (Pie)</p>
+                                        </a>
+                                    </li>
+                                <?php } ?>
                                 <hr>
                                 <?php if ($userid == 'Admin'){ ?>
-                                <li class="nav-item">
-                                    <a href="index?menu=import"
-                                        class="nav-link text-white <?php if($menu == 'import'){echo 'active';}else{echo '';} ?>">
-                                        <i class="nav-icon far fa-plus-square text-white"></i>
-                                        <p class="text-white">นำเข้าข้อมูล </p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="index?menu=line-token"
-                                        class="nav-link text-white <?php if($menu == 'line-token'){echo 'active';}else{echo '';} ?>">
-                                        <i class="nav-icon far fa-comments text-white"></i>
-                                        <p>Line-Token</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="index.php?menu=cpass&username=<?=$_SESSION['Username']?>"
-                                        class="nav-link text-white <?php if($menu == 'cpass'){echo 'active';}else{echo '';} ?>">
-                                        <i class="nav-icon fas fa-lock text-white"></i>
-                                        <p>เปลี่ยนรหัสผ่าน</p>
-                                    </a>
-                                </li>
+                                    <?php if ($_GET['menu'] != 'import'){ ?>
+                                        <li class="nav-item">
+                                            <a href="index?menu=import"
+                                                class="nav-link text-white <?php if($menu == 'import'){echo 'active';}else{echo '';} ?>">
+                                                <i class="nav-icon far fa-plus-square text-white"></i>
+                                                <p class="text-white">นำเข้าข้อมูล </p>
+                                            </a>
+                                        </li>
+                                    <?php }else{ ?>
+                                        <li class="nav-item">
+                                            <a href="#!"
+                                                class="nav-link text-white <?php if($menu == 'import'){echo 'active';}else{echo '';} ?>">
+                                                <i class="nav-icon far fa-plus-square text-white"></i>
+                                                <p class="text-white">นำเข้าข้อมูล </p>
+                                            </a>
+                                        </li>
+                                    <?php } ?>
+                                    <?php if ($_GET['menu'] != 'line-token'){ ?>
+                                        <li class="nav-item">
+                                            <a href="index?menu=line-token"
+                                                class="nav-link text-white <?php if($menu == 'line-token'){echo 'active';}else{echo '';} ?>">
+                                                <i class="nav-icon far fa-comments text-white"></i>
+                                                <p>Line-Token</p>
+                                            </a>
+                                        </li>
+                                    <?php }else{ ?>
+                                        <li class="nav-item">
+                                            <a href="#!"
+                                                class="nav-link text-white <?php if($menu == 'line-token'){echo 'active';}else{echo '';} ?>">
+                                                <i class="nav-icon far fa-comments text-white"></i>
+                                                <p>Line-Token</p>
+                                            </a>
+                                        </li>
+                                    <?php } ?>
+                                    <?php if ($_GET['menu'] != 'index'){ ?>
+                                        <li class="nav-item">
+                                            <a href="index.php?menu=cpass&username=<?=$_SESSION['Username']?>"
+                                                class="nav-link text-white <?php if($menu == 'cpass'){echo 'active';}else{echo '';} ?>">
+                                                <i class="nav-icon fas fa-lock text-white"></i>
+                                                <p>เปลี่ยนรหัสผ่าน</p>
+                                            </a>
+                                        </li>
+                                    <?php }else{ ?>
+                                        <li class="nav-item">
+                                            <a href="#!"
+                                                class="nav-link text-white <?php if($menu == 'cpass'){echo 'active';}else{echo '';} ?>">
+                                                <i class="nav-icon fas fa-lock text-white"></i>
+                                                <p>เปลี่ยนรหัสผ่าน</p>
+                                            </a>
+                                        </li>
+                                    <?php } ?>
                                 <li class="nav-item">
                                     <a href="logout.php" class="nav-link text-danger btnlogout">
                                         <i class="nav-icon fas fa-power-off"></i>
@@ -152,6 +236,7 @@
                                         <p>Login as Administrator</p>
                                     </a>
                                 </li>
+
                                 <?php } ?>
                             </ul>
                         </nav>
@@ -192,7 +277,7 @@
             </div>
             <footer class="main-footer">
                 <div class="float-right d-none d-sm-block">
-                    <b>Project Version</b> 1.3 | 2023-01-18
+                    <b>Project Version</b> 1.3.1 | 2023-02-04
                 </div>
                 <strong>พัฒนาโดย &copy; กิตติคุณ ขุนพรหม</strong> 6421512663
             </footer>

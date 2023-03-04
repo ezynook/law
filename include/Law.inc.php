@@ -30,7 +30,15 @@ class Law{
                 d.province_location AS Location,
                 l.law_id AS law_id,
                 l.law AS Law,
-                l.keyword as keyword
+                l.keyword as keyword,
+                CASE
+                    WHEN LENGTH(d.`subject`) - LENGTH(REPLACE(l.`keyword`, l.keyword, '')) + 1  < 10 THEN '~10%'
+                    WHEN LENGTH(d.`subject`) - LENGTH(REPLACE(l.`keyword`, l.keyword, '')) + 1  < 90 THEN '~70%'
+                    WHEN LENGTH(d.`subject`) - LENGTH(REPLACE(l.`keyword`, l.keyword, '')) + 1 < 99 THEN '80~%'
+                    WHEN LENGTH(d.`subject`) - LENGTH(REPLACE(l.`keyword`, l.keyword, '')) + 1 < 190 THEN '90~%'
+                    WHEN LENGTH(d.`subject`) - LENGTH(REPLACE(l.`keyword`, l.keyword, '')) + 1 >= 190 THEN '100%'
+                ELSE 'Matching Failure'
+            END AS matching
             FROM
                 tbl_data d
                 JOIN tbl_law l
@@ -45,10 +53,11 @@ class Law{
                         law = l.law
                 ) {$filter}
             GROUP BY
-                d.`subject`,
-                l.law,
-                l.keyword
+                d.`subject`
         ";
+        //กรณีเอามาหลายมาตรา
+        // l.law,
+        // l.keyword
         $query = $this->Connect()->query($sql);
         if ($query->num_rows > 0){
             return $query;

@@ -13,9 +13,9 @@
         box-shadow: 5px 5px 5px blue;
     }
 
-    /* .btnlaw {
-        box-shadow: 5px 5px 5px gray;
-    } */
+    .btnlaw {
+        box-shadow: 5px 5px 5px orange;
+    }
 
     table {
         box-shadow: 5px 5px 5px #CCC;
@@ -34,8 +34,8 @@
   border: 16px solid #f3f3f3;
   border-radius: 50%;
   border-top: 16px solid #3498db;
-  -webkit-animation: spin 0.5s linear infinite;
-  animation: spin 0.5s linear infinite;
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
 }
 
 @-webkit-keyframes spin {
@@ -52,28 +52,24 @@
 .animate-bottom {
   position: relative;
   -webkit-animation-name: animatebottom;
-  -webkit-animation-duration: 0.5s;
+  -webkit-animation-duration: 1s;
   animation-name: animatebottom;
-  animation-duration: 0.5s
+  animation-duration: 1s
 }
-.btn_match{
-    pointer-events: none;
-    font-weight: bold;
-}
+
 @-webkit-keyframes animatebottom {
   from { bottom:-100px; opacity:0 } 
-  to { bottom:0px; opacity:3 }
+  to { bottom:0px; opacity:1 }
 }
 
 @keyframes animatebottom { 
   from{ bottom:-100px; opacity:0 } 
-  to{ bottom:0; opacity:3 }
+  to{ bottom:0; opacity:1 }
 }
 
 #myDiv {
   display: none;
 }
-
 </style>
 </head>
 <!-- PHP Code -->
@@ -107,55 +103,64 @@
                 ค้นหาข้อมูล</button>
         </form>
         <hr>
-        <table class="table table-bordered table-hover table-sm" id="myTable" width="100%">
-            <thead style="background-color: #0c2e72;" class="text-white">
+        <table class="table table-bordered table-striped table-sm" id="myTable" width="100%">
+            <thead class="table-dark">
                 <tr>
-                    <th scope="col" align="center">หัวข้อข่าว</th>
-                    <th scope="col" align="center">รายละเอียดข่าว</th>
-                    <th scope="col" align="center">วันที่ลงข่าว</th>
-                    <th scope="col" align="center">จังหวัด</th>
-                    <th scope="col" align="center">
-                        ค่าความแม่นยำ &nbsp;&nbsp;
-                        <a href="#" class="text-white" data-bs-toggle="modal" data-bs-target="#tooltip">
-                        <i class="fa fa-info-circle"></i>
-                        </a>
-                    </th>
-                    <th scope="col" align="center">บทบัญญัติกฎหมายที่เกี่ยวข้อง</th>
+                    <th scope="col">หัวข้อข่าว</th>
+                    <th scope="col">รายละเอียดข่าว</th>
+                    <th scope="col">วันที่ลงข่าว</th>
+                    <th scope="col">จังหวัด</th>
+                    <th scope="col">บทบัญญัติกฎหมายที่เกี่ยวข้อง</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                    $class_match = "";
+                    $data = array();
+                    foreach($result as $i){
+                        $data[] = $i['id'];
+                    }
+                    $arrayValueCounts = array_count_values($data); 
+                    $color = [
+                        '#F2D7D5',
+                        '#EBDEF0',
+                        '#D4E6F1',
+                        '#D1F2EB',
+                        '#FCF3CF',
+                        '#FDEBD0',
+                        '#F6DDCC',
+                        '#EAECEE',
+                        '#CCCCFF',
+                        ];
+                    $oldid = '';
+                    $oldcolor = '';
+                    $oldrandom = '';
                     foreach($result as $val){
-                        if ($val['matching'] == '~10%'){
-                            $class_match = 'btn btn-outline-danger text-danger';
-                        }elseif($val['matching'] == '~70%'){
-                            $class_match = 'btn btn-outline-warning text-warning';
-                        }elseif($val['matching'] == '80~%'){
-                            $class_match = 'btn btn-outline-info text-info';
-                        }elseif($val['matching'] == '90~%'){
-                            $class_match = 'btn btn-outline-primary text-primary';
+                        if($oldid == $val['id']){
+                                $colorStyle = $oldcolor;
                         }else{
-                            $class_match = 'btn btn-outline-success text-success';
+                            $random = rand(0,6);
+                            if($oldrandom == $random){
+                                    $random = rand(0,8);
+                            }
+                        // $colorStyle = 'style="background-color:'.$color[$random].'"';
+                        $oldcolor =  $colorStyle;
+                        $oldrandom = $random;
                         }
+                       $colorStyle = ($arrayValueCounts[$val['id']] > 1) ? 'style="background-color:'.$color[$random].'"' : '';
+                       $oldid = $val['id'];
                 ?>
                 <tr>
-                    <td>
+                    <td <?=$colorStyle?>>
                         <?=$val['Subject']?>
                     </td>
                     <td data-toggle="tooltip" data-placement="buttom" title="<?= $val['Detail'];?>">
                         <?=mb_substr($val['Detail'], 0, 100)?></td>
                     <td><?=convertDate($val['Datetimes']);?></td>
                     <td><?=$val['Location']?></td>
-                    <td align="center">
-                        <span class="<?=$class_match?> btn_match">
-                            <?=$val['matching']?>
-                        </span>
-                    </td>
-                    <td align="center">
+                    <td>
                         <a href="#myModal" data-bs-toggle="modal" data-bs-target="#myModal"
                             id="data-id=<?php echo $val['law_id']; ?>" data-id="<?php echo $val['law_id']; ?>"
-                            class="btn btn-outline-secondary"><strong><i><?= $val['Law'];?></i></strong>
+                            class="btn btn-warning btnlaw"><strong><i><?= $val['Law'];?></i></strong>
                         </a>
                     </td>
                 </tr>
@@ -176,30 +181,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Modal  Tooltip -->
-    <div class="modal fade" id="tooltip" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">ค่าความแม่นยำ</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <strong><u>ค่าความแม่นยำคือ</u></strong>&nbsp; กระบวนการนี้คือนำข้อมูลข่าวที่ได้มาจากการนำเข้า และนำข้อมูลข่าวนั้นมาทำการ
-            ประมวลผลร่วมกับข้อมูลกฎหมาย <i>(Compare & Mapping)</i> โดยหลักการคำนวณความแม่นยำนั้นจะนำข้อมูลข่าวมาทำการ <i>Merge</i> และ
-            หาค่าความแม่นยำออกมาเป็น <i>Percentage</i> โดยเรียงลำดับตามความแม่นยำจากน้อยไปหามาก ดังนี้: <br><hr>
-            <b class="text-danger">~10% </b> &nbsp; ค่าความแม่นยำต่ำ 0-10 <br>
-            <b class="text-warning">~70% </b> &nbsp; ค่าความแม่นยำปานกลาง 10-70 <br>
-            <b class="text-info">80~% </b> &nbsp; ค่าความแม่นยำดี 70-80 <br>
-            <b class="text-primary">90~% </b> &nbsp; ค่าความแม่นยำดีมาก 80-90 <br>
-            <b class="text-success">100% </b> &nbsp; ค่าความแม่นยำดีมากที่สุด 90-100 <br> <hr>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิดหน้าจอ</button>
-        </div>
-        </div>
-    </div>
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -234,10 +215,6 @@ $(document).ready(function() {
     $('#myTable').dataTable({
         dom: 'Blfrtip',
         "lengthMenu": [10, 25, 50],
-        "columnDefs": [ {
-            "targets": 4,
-            "orderable": false
-        } ],
         buttons: [{
                 extend: 'csv',
                 charset: 'UTF-8',
