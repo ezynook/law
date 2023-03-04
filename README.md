@@ -1,7 +1,7 @@
 # ระบบบันทึกข้อมูลข่าวและกฎหมาย
 ## _The Law Management System_
 ##### ภาษาที่ใช้ในการพัฒนาระบบ
-**Front-End** : HTML, JQuery
+**Front-End** : HTML, JQuery <br>
 **Back-End** : PHP, MySQL, Python
 
 ---
